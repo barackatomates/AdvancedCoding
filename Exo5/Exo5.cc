@@ -49,7 +49,7 @@ class Point
 	
 	~Point()
 	{
-		cout <<endl<<"truc de ouf"<<endl;
+		//cout <<endl<<"truc de ouf"<<endl;
 	}
 
 };
@@ -85,21 +85,21 @@ class Segment
 		
 		bool estVerticale()
 		{
-			if(p1.getAbs == p2.getAbs) return true;
+			if(p1.getAbs() == p2.getAbs()) return true;
 				else return false;
 		}
 		
 		bool estHorizontal()
 		{
-			if(p1.getOrd == p2.getOrd) return true;
+			if(p1.getOrd() == p2.getOrd()) return true;
 				else return false;
 		}
 		
-		bool estVerticale()
+		bool estDiagonal()
 		{
-			if(p1.getAbs != p2.getAbs)
+			if(p1.getAbs() != p2.getAbs())
 			{
-				if(p1.getOrd != p2.getOrd)
+				if(p1.getOrd() != p2.getOrd())
 					return true;
 					
 			}else return false;
@@ -109,26 +109,28 @@ class Segment
 		{
 			if(this->estVerticale())
 			{
-				if(p1.getOrd > p2.getOrd)
-					return p1.getOrd - p2.getOrd;
-					else   p2.getOrd - p1.getOrd;
+				if(p1.getOrd() > p2.getOrd())
+					return p1.getOrd() - p2.getOrd();
+					else   p2.getOrd() - p1.getOrd();
 			}
 			else if(this->estHorizontal())
 			{
-				if(p1.getAbs > p2.getAbs)
-					return p1.getAbs - p2.getAbs;
-					else   p2.getAbs - p1.getAbs;
+				if(p1.getAbs() > p2.getAbs())
+					return p1.getAbs() - p2.getAbs();
+					else   p2.getAbs() - p1.getAbs();
 			}
 			else
 			{
-				
+				return sqrt( (p1.getAbs() - p2.getAbs()) * (p1.getAbs() - p2.getAbs()) +  (p1.getOrd() - p2.getOrd()) * (p1.getOrd() - p2.getOrd()));
 			}
 		}
 };
 
 int main()
 {
-
+	Segment S = Segment(4,8,5,6);
+	double L = S.longueur();
+	cout <<"length:" << L << endl;
 
 	return 1;
 }
