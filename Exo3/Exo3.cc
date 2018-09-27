@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-void tableauEcriture(int T[])
+void tableauEcriture(int T[], int size)
 {
-	for(int i = 0; i < 10; i++)
+	for(int i = 0; i < size; i++)
 	{
 		T[i] = i;
 		cout<< T[i] << " ";
@@ -12,9 +12,9 @@ void tableauEcriture(int T[])
 	cout << endl;
 }
 
-void tableauLecture(const int T[])
+void tableauLecture(const int T[], int size)
 {
-	for(int i = 0; i < 10; i++)
+	for(int i = 0; i < size; i++)
 	{
 		cout<< T[i] << " ";
 	}
@@ -25,13 +25,13 @@ void tableauLecture(const int T[])
 void App1()
 {
 	int T[10];
-	tableauEcriture(T);
+	tableauEcriture(T, 10);
 }
 
 void App2()
 {
 	int T[10] = {10,9,8,7,6,5,5,5,3,2};
-	tableauLecture(T);
+	tableauLecture(T, 10);
 }
 
 int main()
