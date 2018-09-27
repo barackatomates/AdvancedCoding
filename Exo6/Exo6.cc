@@ -51,7 +51,7 @@ class CString
 		
 		
 		//STRING OP
-		const char* getString()const
+		const char* getString() const
 		{
 			return S;
 		}
@@ -74,7 +74,7 @@ class CString
 		  }*/
 		
 		//ALPH ORDER
-		bool plusGrandQue(CString s2)
+		bool plusGrandQue(CString s2) const
 		{
 			int Taille;
 			if(strlen(this->S) < strlen(s2.S))
@@ -94,7 +94,7 @@ class CString
 			return false;
 		}
 		
-		bool infOuEgale(CString s2)
+		bool infOuEgale(CString s2) const
 		{
 			int Taille;
 			if(strlen(this->S) < strlen(s2.S))
@@ -109,12 +109,15 @@ class CString
 			return true;
 		}
 		
-		CString plusGrand(CString s2)
+		CString plusGrand(CString s2) const
 		{
 			if(this->plusGrandQue(s2))
 				return *this;
 				else return s2;
 		}
+		
+		//OR: if( strcmp(S,s2.S)>0 ) return 1; else return 0;
+		
 		
 		~CString()
 		{
