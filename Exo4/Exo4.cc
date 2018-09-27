@@ -7,6 +7,12 @@ class Point
 		int x; int y;
 	
 	public:
+	
+		int getX()const{return x;}
+		int getY()const{return y;}
+		void Affichage();
+		void clone();
+		
 		Point()
 		{
 			x = 9; y = 25;
@@ -19,15 +25,10 @@ class Point
 		
 		Point(const Point &P)
 		{
-			x = P.getX(); y = P.getY();
+			this->x = P.getX(); this->y = P.getY();
 		}
 		
-		int getX();
-		int getY();
 };
-
-int Point::getX() {return x;}
-int Point::getY() {return y;}
 
 int main()
 {
