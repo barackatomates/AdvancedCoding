@@ -1,5 +1,5 @@
-
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 class Point
@@ -119,11 +119,16 @@ class Segment
 					return p1.getAbs - p2.getAbs;
 					else   p2.getAbs - p1.getAbs;
 			}
+			else
+			{
+				
+			}
 		}
 };
 
 int main()
 {
+
 
 	return 1;
 }
