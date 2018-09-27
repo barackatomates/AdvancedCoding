@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+#include <cstring>
 
 int main(){
 	
@@ -12,13 +13,24 @@ int main(){
 		printf("%d - ", *p);
 	}
 	
-	printf("\n");
+	printf("\n\n\n");
 	
-	//Verif
+	/*Verif
 	for(int i = 0; i < 10; i++)
 	{
 		printf("%d - ", T[i]);
 	}
 	
-	printf("\n");
+	printf("\n");*/
+	
+	delete T;
+	
+	char** C = new char*[3];
+	C[0] = new char[strlen("RisingSun")+1];
+	strcpy(C[0],"RisingSun");
+	
+	cout << C[0] << endl;
+	
+	delete []C;
+	
 }
