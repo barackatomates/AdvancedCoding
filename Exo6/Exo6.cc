@@ -99,7 +99,7 @@ class CString
 		CString plusGrand(CString s2)
 		{
 			if(this->plusGrandQue(s2))
-				return this;
+				return *this;
 				else return s2;
 		}
 };
@@ -123,4 +123,5 @@ int main()
 		cout << "plus petit" << endl ;
 		
 	 s3 = s1.plusGrand( s2 ) ;// retourner s1 si s1>s2, s2 sinon
+	 cout << s3.getString() << endl ;
 } 
