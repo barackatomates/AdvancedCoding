@@ -8,8 +8,8 @@ class CString
 		char* S;
 		
 	public:
-		static void init(); 
 		
+		//BUILDER
 		CString()
 		{
 			S = new char[1];
@@ -21,8 +21,6 @@ class CString
 		{
 			S = new char[strlen(N) + 1];
 			strcpy(S,N);
-			
-			//ct++;
 		}
 		
 		CString(const char* N, const char C)
@@ -32,7 +30,6 @@ class CString
 			strcpy(S,N);
 			strncat(S,&C, 1);
 			cout<< strlen(S)<<endl;
-			//ct++;
 		}
 		
 		CString(const char C)
@@ -40,10 +37,9 @@ class CString
 			S = new char[2];
 			S[0] = C;
 			S[1] = '\0';
-			
-			//ct++;
 		}
 		
+		//STRING OP
 		char* getString()const
 		{
 			return S;
@@ -52,15 +48,11 @@ class CString
 		CString plus(const char C)
 		{
 			CString Str = CString(this->getString(), C);
-			//cout<< strlen(Str.S) << endl;
-			
-			
-			//Str.S[strlen(Str.S) - 2] = C;
-			//Str.S[strlen(Str.S)-  1] = '\0';
-			
+
 			return Str;
 		}
 		
+		//ALPH ORDER
 		bool plusGrandQue(CString s2)
 		{
 			int Taille;
@@ -104,6 +96,7 @@ class CString
 		}
 };
 
+//DEFINITION
 class Definition
 {
 	private:

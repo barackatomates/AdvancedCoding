@@ -6,15 +6,19 @@ class CString
 {
 	private:
 		char* S;
+		//static int nbChaine;
 		
 	public:
-		//static int ct = 0;
-		
+		//static void init(); 
+		static int StCt;
+
+		//CONSTRUCTOR
 		CString()
 		{
 			S = new char[1];
 			S[0] = '\0';
 			
+			StCt++;
 		}
 		
 		CString(const char* N)
@@ -22,7 +26,7 @@ class CString
 			S = new char[strlen(N) + 1];
 			strcpy(S,N);
 			
-			//ct++;
+			StCt++;
 		}
 		
 		CString(const char* N, const char C)
@@ -32,7 +36,8 @@ class CString
 			strcpy(S,N);
 			strncat(S,&C, 1);
 			cout<< strlen(S)<<endl;
-			//ct++;
+			
+			StCt++;
 		}
 		
 		CString(const char C)
@@ -41,10 +46,12 @@ class CString
 			S[0] = C;
 			S[1] = '\0';
 			
-			//ct++;
+			StCt++;
 		}
 		
-		char* getString()const
+		
+		//STRING OP
+		const char* getString()const
 		{
 			return S;
 		}
@@ -52,15 +59,21 @@ class CString
 		CString plus(const char C)
 		{
 			CString Str = CString(this->getString(), C);
-			//cout<< strlen(Str.S) << endl;
-			
-			
-			//Str.S[strlen(Str.S) - 2] = C;
-			//Str.S[strlen(Str.S)-  1] = '\0';
-			
 			return Str;
+			
+			
 		}
 		
+		/*CString plus(const CString* s)
+		  {
+			char temp[20];
+			strcpy(temp, S);
+			strcat(temp,s.S);
+			* CString tempS(temp);
+			* return tempS;
+		  }*/
+		
+		//ALPH ORDER
 		bool plusGrandQue(CString s2)
 		{
 			int Taille;
@@ -102,15 +115,27 @@ class CString
 				return *this;
 				else return s2;
 		}
+		
+		~CString()
+		{
+			//delete []S;
+		}
+		
+		/*static int nbChaine()
+		{
+			return CString::nbChaine;
+		}*/
 };
+
+int CString::StCt = 0;
 
 int main()
 {
-	 CString s1( "toto" ); cout << s1.getString(); cout << endl;
-	 CString s2( 'q' ); cout << s2.getString(); cout << endl;
-	 CString s3 ; cout << s3.getString(); cout << endl;
+	 CString s1( "tototalitarisme" );	 cout << s1.getString(); cout << endl;
+	 CString s2( 'q' ); 	 cout << s2.getString(); cout << endl;
+	 CString s3;			 cout << s3.getString(); cout << endl;
 
-	 //cout << "nbrChaines" << CString::nbrChaines() << endl ;
+	 cout << "nbrChaines" << CString::StCt << endl ;
 	 //afficher le nombre de chaines créées
 	 
 	 s3 = s1.plus('w') ;
