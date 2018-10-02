@@ -20,7 +20,6 @@ class CString
 			
 			StCt++;
 		}
-		
 		CString(const char* N)
 		{
 			S = new char[strlen(N) + 1];
@@ -28,7 +27,6 @@ class CString
 			
 			StCt++;
 		}
-		
 		CString(const char* N, const char C)
 		{
 			S = new char[strlen(N) + 2];
@@ -39,7 +37,6 @@ class CString
 			
 			StCt++;
 		}
-		
 		CString(const char C)
 		{
 			S = new char[2];
@@ -49,6 +46,22 @@ class CString
 			StCt++;
 		}
 		
+		//FUCK YOUR MEMORY YOU CHEEKY DICKWAFFLE
+		CString(const CString& otha)
+		{
+			S = new char[strlen(otha.S)];
+			memcpy(this->S, otha.S, 20);
+		}
+		
+		//DOCTORS ARE OVERATED ANYWAYS
+		CString& operator= (const CString& otha)
+		{
+			if(this != &otha)
+				memcpy(S, otha.S, 20); //IMMA PUT 20 HERE CAUSE I'M LAZY AND I HAVE A HEADACH MY CAPS ARE ON AND don't you think headach is a really weird word ? I mean, what the hell duderinos (and rastasistafarinas !) look at the ducking word ! It's horsing annoying, why in the name of the Holy Moly Spaghetti Rapper (and not Rapist, that's comming later [or was it cu... no it wasn't...?] does "ach" is pronounced "ach" ? I just don't get it. Anyways I need to throw out the trash (and by trash I mean the jews [and by jews I in fact mean defectuous pills against headaches, wait... IS THIS HOW YOUR SUPPOSED TO WRITE THAT ? IS IT REALLY THE PLURAL FORM OF HEADACH ? AND WHAT THE BULL ? EVEN THOUGH MY CAPS LOCK IS ACTIVE WHENEVER I PRESS THE QUESTION MARK KEY A ',' APPEAR INSTEAD OF A '?', WHAT KIND OF SORCERY IS THIS ? Oh AND BY THE WAY, REMEMBER EARLIER WHEN I SAID MY CAPS WERE ON ? WELL... MY LATE FATHER, FORGIVE FOR I HAVE A SIN TO CONFESS. FIRST I NEVER LIKED YOUR ROBE I THINK THEY ARE WAY TOO CONFORTABLE TO BE USED BY HONEST WORKING MEN SO QUIT THE ACT AND START TO ACT LIKE A REAL TODDLYDOODLER YOU DESPICABLE EXCUSE OF A MAN ! HUM... YEAH ! SO, I LIED ABOUT HAVING MY CAPS ON, THEY WERE OFF ! UNTIL I TOGGLED THEM ON WHEN I STARTED WRITING IN CAPITAL LETTERS AGAIN SOOOOOOO THAT'S IT. IT STILL MAKES ONLY ONE SIN THOUGH 'CAUSE YOU KNOW WHAT THEY SAY, ADMIT YOUR FAULT AND I'LL ONLY INSERT ONE HAND !
+				
+			return *this;
+		}
+		
 		
 		//STRING OP
 		const char* getString() const
@@ -56,22 +69,22 @@ class CString
 			return S;
 		}
 		
-		CString plus(const char C)
+		/*CString plus(const char C)
 		{
-			CString Str = CString(this->getString(), C);
-			return Str;
-			
-			
-		}
+			CString* Str = new CString(this->getString(), C);
+			return *Str;
+		}*/
 		
-		/*CString plus(const CString* s)
+		CString plus(const char s)
 		  {
+			char DrPepperTM[2] = {s};  
+			
 			char temp[20];
 			strcpy(temp, S);
-			strcat(temp,s.S);
-			* CString tempS(temp);
-			* return tempS;
-		  }*/
+			strcat(temp,DrPepperTM);
+			CString tempS(temp);
+			return tempS;
+		  }
 		
 		//ALPH ORDER
 		bool plusGrandQue(CString s2) const
@@ -121,7 +134,7 @@ class CString
 		
 		~CString()
 		{
-			//delete []S;
+			delete []S;
 		}
 		
 		/*static int nbChaine()
@@ -137,7 +150,6 @@ int main()
 	 CString s1( "tototalitarisme" );	 cout << s1.getString(); cout << endl;
 	 CString s2( 'q' ); 	 cout << s2.getString(); cout << endl;
 	 CString s3;			 cout << s3.getString(); cout << endl;
-
 	 cout << "nbrChaines" << CString::StCt << endl ;
 	 //afficher le nombre de chaines créées
 	 
