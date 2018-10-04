@@ -177,23 +177,30 @@ class Dictionnaire
 		{
 
 		}
+		
+		void DicOrder()
+		{
+			
+		}
+		
 		void addDef(const Definition Def)
 		{
 			Dic.push_front(Def);
+			Dic.Order();
 		}
 		
 		bool Recherche(const Definition Def)
 		{
 			for(list<Definition>::iterator it = Dic.begin(); it != Dic.end(); it++)
 			{
-				if((*it).getClef() == Def.getClef())
+				if(!strcmp( (*it).getClef() , Def.getClef() ))
 				{
-					cout << "J'ai trouvé chef !";
+					cout << "J'ai trouvé chef !\n";
 					Afficher(*it);
 					return true;
 				}
 			}
-			cout << "Jamais entendu parlé de ça gamin.";
+			cout << "Jamais entendu parlé de ça gamin.\n";
 			return false;
 		}
 		
@@ -207,7 +214,9 @@ int CString::StCt = 0;
 
 int main()
 {
-	Definition homer( "Homer", "Buveur de biere" ) ;
-	cout<<"la definition du mot "<< homer.getClef()<<" est "<<
-	homer.getDef() << endl ; 
+	Definition homer( "Homer", "Buveur de biere" );
+	Dictionnaire Dico = Dictionnaire();
+	
+	Dico.addDef(homer);
+	Dico.Recherche(homer);
 } 
