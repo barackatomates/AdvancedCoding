@@ -145,6 +145,7 @@ class CString
 
 int CString::StCt = 0;
 
+#ifdef DIC
 int main()
 {
 	 CString s1( "tototalitarisme" );	 cout << s1.getString(); cout << endl;
@@ -165,3 +166,4 @@ int main()
 	 s3 = s1.plusGrand( s2 ) ;// retourner s1 si s1>s2, s2 sinon
 	 cout << s3.getString() << endl ;
 } 
+#endif
