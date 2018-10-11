@@ -132,7 +132,7 @@ Vector::Vector(const Vector &v)
 	if(!v.head)
 	{
 		head=NULL;
-		lenght=0;
+		length=0;
 		return;
 	}
 }
@@ -157,7 +157,77 @@ Vector::Vector(const Vector &v)
 		thisCurNode=thisCurNode->nextNode;
 	}
 	
-	lentght = v.length;
+	lentgth = v.length;
+}
+
+Vector::~Vector()
+{
+	delete head;
+	head=NULL;
+	length=0;
+}
+
+Vector &Vector::operator +=(const int integer)
+{
+	Node *newNode=new Node(integer);
+	if(!head)
+		head=newNode;
+	else
+	{
+		Node *n=head;
+		
+		while(n->nextNode)
+			n=n->nextNode;
+			
+		n->nextNode=newNode;
+	}
+	length++;
+	return *this;
+}
+
+Vector &Vector::operator =(const Vector &v)
+{
+	if(this==&v)
+		return *this;
+	if(head)
+		delete head;
+	head=NULL;
+	length=0;
+	Node*n=v.head;
+	for(int i=0; i<v.length;i++)
+	{
+		(*this)+=n->integer;
+		n=n->nextNode;
+	}
+	
+	return *this;
+}
+
+ostream &operator <<(ostream &o, Vector &v)
+{
+	Node*curNode=v.head;
+	for(int i=0; i<v.length;i++)
+	{
+		o<<curNode->GetInt()<<" ";
+		curNode=curNode->GetNextNode();
+	}
+	return o;
+}
+
+istream &operator >>(istream &is, Vector &v)
+{
+	int entry=-1;
+	cout<<"entrer "<<v.length<<" entier:";
+	for(int i=0; i<v.length; i++)
+		is>>v[i];
+	return is;
+}
+
+int & Vector::operator [](int index)
+{
+	Node*n=head;
+	for(int i=0; i<index; i++;)
+		n=n->nextNode;
 }
 
 int main()

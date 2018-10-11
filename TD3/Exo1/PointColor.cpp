@@ -31,9 +31,38 @@ PointColor::PointColor(const PointColor &P)
 	strcpy(color, P.color);
 }
 
-PointColor::getColor()
+char* PointColor::getColor() const
 {
 	return color;
 }
 
-int main(){ return 0; }
+void PointColor::setColor(const char* col)
+{
+	this->color = new char[strlen(col)];
+	strcpy(color, col);
+}
+
+void PointColor::Afficher()
+{
+	Point::Afficher();
+	cout<< color << endl;
+}
+
+PointColor::~PointColor()
+{
+	delete[] color;
+}
+
+int main()
+{
+	PointColor A = PointColor();
+	PointColor B = PointColor(8.0,6.0, "Red");
+	PointColor C = PointColor(A);
+	
+	A.Afficher();
+	B.Afficher();
+	C.Afficher();
+	
+	cout<< endl;
+	return 0;
+}
