@@ -15,6 +15,8 @@ class Point
 		Point(double abs, double ord);
 		Point(const Point&P);
 		
+		void Deplacer(const int x, const int y);
+		
 		~Point();
 		
 		void Afficher();

@@ -29,9 +29,7 @@ using namespace std;
 	
 	void  Point::Afficher()
 	{
-		cout << endl;
 		cout << this->abs << " " << this->ord;
-		cout << endl;
 	}
 	
 	void  Point::Cloner(const Point &P)
@@ -40,9 +38,15 @@ using namespace std;
 		this->ord = P.getOrd();
 	}
 	
+	void Point::Deplacer(const int x, const int y)
+	{
+		abs += x;
+		ord += y;
+	}
+	
 	Point::~Point()
 	{
-		cout << "EXPLOSION !" << endl;
+		//cout << "EXPLOSION !" << endl;
 	}
 
 

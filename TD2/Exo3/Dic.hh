@@ -30,9 +30,30 @@ class Node
 		
 	public:
 		Node(Definition*);
-		~Node();
 		Definition *GetDef(){return def;}
 		Node* GetNextNode(){return nextNode;}
+		~Node();
+};
+
+class dico
+{
+	private:
+		Node *head;
+		int length;
+		bool isOwner;
+		
+		void Destroy(Node *); //pour le destructeur
+	public:
+	
+		Dico(bool=true);	//param optionnel par défaut à true
+		~Dico();
+		void AddDef(Definition*)
+		int getLength(){return length;}
+		
+		CString GetDef(CString &);
+		Definition* GetRandDef();
+		void Display();
+		friend ostream& operator << (ostream &, Dico &);
 };
 
 #endif
