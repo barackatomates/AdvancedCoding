@@ -32,6 +32,11 @@ Node::Node(Definition *d)
 	nextNode = NULL;
 }
 
+Node::~Node()
+{
+	cout<< "woosh" << endl;
+}
+
 //missing stuff ?
 
 Dico::Dico(bool own)
