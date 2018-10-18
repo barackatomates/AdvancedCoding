@@ -1,4 +1,4 @@
-#include "../../Exo6/Exo6.cc"
+#include "../../TD2/Exo1/Exo1.cc"
 
 #ifndef DIC
 #define DIC
@@ -35,7 +35,7 @@ class Node
 		~Node();
 };
 
-class dico
+class Dico
 {
 	private:
 		Node *head;
@@ -47,7 +47,7 @@ class dico
 	
 		Dico(bool=true);	//param optionnel par défaut à true
 		~Dico();
-		void AddDef(Definition*)
+		void AddDef(Definition*);
 		int getLength(){return length;}
 		
 		CString GetDef(CString &);

@@ -14,14 +14,14 @@ CString Definition::GetClef() const
 	return clef;
 }
 
-CString Definition::GetDef const
+CString Definition::GetDef() const
 {
 	return definition;
 }
 
 Definition::~Definition()
 {
-	cout <<" dest "<< clef.GetString()<<"-";
+	cout <<" dest "<< clef.getString()<<"-";
 }
 
 //NODING OFF
@@ -59,7 +59,7 @@ void Dico::Destroy(Node* n)
 	}
 }
 
-void Dico::AddDef(Definition* newdef)
+void Dico::AddDef(Definition* newDef)
 {
 	if(!newDef)
 		return;
@@ -70,15 +70,15 @@ void Dico::AddDef(Definition* newdef)
 	Node * temp;
 	while(temp=curNode->nextNode)
 	{
-		CString curClef = temp−>def->GetClef();
-		if(curCle>entry)
+		CString curClef = temp->def->GetClef();
+		if(entry <= curClef)
 			break;
 		curNode=curNode->nextNode;
 	}
 	
 	newNode->nextNode=temp;
 	curNode->nextNode=newNode;
-	length++
+	length++;
 }
 
 CString Dico::GetDef(CString &entry)
@@ -87,7 +87,7 @@ CString Dico::GetDef(CString &entry)
 	CString def = "";
 	while(curNode)
 	{
-		if(!srcmp(entry.GetString(),(curNode->def->GetClef()).GetString()))
+		if(!strcmp(entry.getString(),(curNode->def->GetClef()).getString()))
 		{
 			def = curNode->def->GetDef();
 			break;
@@ -102,7 +102,7 @@ void Dico::Display()
 	Node* curNode=head->nextNode;
 	while(curNode)
 	{
-		cout << curNode->def->GetClef().GetString()<<" = "<<curNode->def->GetDef().GetString()<<endl;
+		cout << curNode->def->GetClef().getString()<<" = "<<curNode->def->GetDef().getString()<<endl;
 		curNode=curNode->nextNode;
 	}
 }
@@ -111,7 +111,7 @@ Definition* Dico::GetRandDef()
 {
 	if(!length)
 		return NULL;
-	int rnd = rand()%length);
+	int rnd = (rand()%length);
 	
 	Node *curNode=head->nextNode;
 	for(int i=0; i< rnd; i++)
@@ -122,7 +122,35 @@ Definition* Dico::GetRandDef()
 	return curNode->def;
 }
 
+ostream & operator << (ostream &out, Dico &dico)
+{
+	dico.Display();
+	return out;
+}
+
 int main()
 {
+	Dico dico = Dico();
+	
+	dico.AddDef(new Definition("Albert", "Camu"));
+	dico.AddDef(new Definition("cpp", "Cours Petite P***"));
+	dico.AddDef(new Definition("Naivasamjananasamjana", "The World Above Earthly Desires"));
+	dico.AddDef(new Definition("Patate", "Baffe"));
+	dico.AddDef(new Definition("Forain", "Homme de respect"));
+
+	cout<<dico<<endl;
+	CString s=CString("cpp");
+	
+	cout<<dico.GetDef(s).getString()<<endl;
+	
+	Dico *tmpDico = new Dico(false);
+	
+	srand((unsigned)time(0));
+	tmpDico->AddDef(dico.GetRandDef());
+	tmpDico->AddDef(dico.GetRandDef());
+	tmpDico->AddDef(dico.GetRandDef());
+	cout<<*tmpDico;
+	delete tmpDico;
+	
 	return 0;
 }
