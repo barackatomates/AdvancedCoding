@@ -66,7 +66,7 @@ void Dico::AddDef(Definition* newdef)
 		
 	Node* newNode = new Node(newDef);
 	CString entry = newDef->GetClef();
-	Node *curNode=head;
+	Node * curNode=head;
 	Node * temp;
 	while(temp=curNode->nextNode)
 	{
@@ -79,6 +79,47 @@ void Dico::AddDef(Definition* newdef)
 	newNode->nextNode=temp;
 	curNode->nextNode=newNode;
 	length++
+}
+
+CString Dico::GetDef(CString &entry)
+{
+	Node* curNode = head ->nextNode;
+	CString def = "";
+	while(curNode)
+	{
+		if(!srcmp(entry.GetString(),(curNode->def->GetClef()).GetString()))
+		{
+			def = curNode->def->GetDef();
+			break;
+		}
+		curNode=curNode->nextNode;
+	}
+	return def;
+}
+
+void Dico::Display()
+{
+	Node* curNode=head->nextNode;
+	while(curNode)
+	{
+		cout << curNode->def->GetClef().GetString()<<" = "<<curNode->def->GetDef().GetString()<<endl;
+		curNode=curNode->nextNode;
+	}
+}
+
+Definition* Dico::GetRandDef()
+{
+	if(!length)
+		return NULL;
+	int rnd = rand()%length);
+	
+	Node *curNode=head->nextNode;
+	for(int i=0; i< rnd; i++)
+	{
+		curNode=curNode->nextNode;
+	}
+	
+	return curNode->def;
 }
 
 int main()

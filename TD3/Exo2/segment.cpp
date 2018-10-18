@@ -3,7 +3,14 @@
 
 using namespace std;
 
-Segmen
+Segment::Segment()
+{
+	A.setAbs(0);
+	A.setOrd(0);
+	
+	B.setAbs(0);
+	B.setOrd(0);
+}
 
 Segment::Segment(double xA, double yA, double xB, double yB)
 {
@@ -25,7 +32,7 @@ void Segment::Afficher()
 
 void Segment::Deplacer(const int x, const int y)
 {
-	Form::getPoint().Deplacer(x,y); 																	//if A was not protected but private (i'm a lazy fucker today) [that means i f*** lazy people, including myself]
+	A.Deplacer(x,y); 																//Nevermind							//if A was not protected but private (i'm a lazy fucker today) [that means i f*** lazy people, including myself]
 	B.Deplacer(x,y);
 }
 
