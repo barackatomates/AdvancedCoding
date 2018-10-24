@@ -5,16 +5,24 @@ class PointColor:public Point
 		char* color;
 		
 	public:
+	
+	//-------------Constructors-------------
 		PointColor();
 		PointColor(double a, double o,const char* col);
 		PointColor(const PointColor &P);
 		
+	//-------------Getters & Setters-------------	
 		char* getColor() const;
 		void setColor(const char* col);
-		
-		~PointColor();
-		
+				
+	//-------------Traitement-------------
 		void Afficher();
 		void Cloner(const PointColor &P);
+		void ChangeColor(const char* col);
+		
+	//-------------OPERATOR-------------
+		PointColor& operator =(const PointColor &other);
+	
+		~PointColor();
 };
 

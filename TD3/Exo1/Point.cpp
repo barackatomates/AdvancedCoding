@@ -23,13 +23,11 @@ using namespace std;
 	{
 		this->abs = P.getAbs();
 		this->ord = P.getOrd();
-		//this->abs = p.abs;
-		//this->ord = p.ord;
 	}
 	
 	void  Point::Afficher()
 	{
-		cout << this->abs << " " << this->ord;
+		cout << "Abs= " << this->abs << " " << "Ord= " << this->ord;
 	}
 	
 	void  Point::Cloner(const Point &P)
