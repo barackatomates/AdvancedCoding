@@ -1,4 +1,7 @@
+#ifndef SEG
+#define SEG
 #include "segment.cpp"
+#endif
 
 class Rectangle : public Segment
 {

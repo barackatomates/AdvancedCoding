@@ -1,4 +1,7 @@
+#ifndef FORM
+#define FORM
 #include "Form.hh"
+#endif
 
 class Segment : public Form
 {

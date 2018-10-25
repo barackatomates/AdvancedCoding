@@ -21,9 +21,9 @@ class Point
 			
 	//-------------Traitement-------------
 		void Deplacer(const int x, const int y);
-		void Afficher();
+		virtual void Afficher();
 		virtual void Cloner(const Point &P);
 	
-		~Point();
+		virtual ~Point();
 };
 
