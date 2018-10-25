@@ -26,5 +26,6 @@ class List
 		List();
 		void Add(Form* F);
 		void Display();
+		void Move(int x, int y);
 		Node* getHead(){return head;}
 };

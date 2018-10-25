@@ -36,14 +36,25 @@ void List::Add(Form* F)
 void List::Display()
 {
 	Node* curNode = head->getNext();
-	
-	cout<<"zbre\n";
+
 	while(curNode != NULL)
 	{
 		curNode->item->Afficher();
+		cout << endl;
 		curNode = curNode->nextNode;
 	}
+}
+
+void List::Move(int x, int y)
+{
+	Node* curNode = head->getNext();
 	
+	cout << "MOVE !\n";
+	while(curNode != NULL)
+	{
+		curNode->item->Deplacer(x, y);
+		curNode = curNode->nextNode;
+	}
 }
 
 int main()
@@ -61,6 +72,8 @@ int main()
 	
 	cout<<L.getHead()->getItem()<<endl;
 	
+	L.Display();
+	L.Move(5,10);
 	L.Display();
 	
 	return 900;
