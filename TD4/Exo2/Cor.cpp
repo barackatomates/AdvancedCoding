@@ -88,5 +88,7 @@ int main(){
 	 
 	 cout << myInts.GetMax()<< endl; //affiche le plus grand des 2 entiers
 	 cout << myFloats.GetMax()<<endl;//affiche le plus grand des 2 flottants
+	
+	 
 	 return 0 ; 
 }
